@@ -1,0 +1,5 @@
+version: v2.6.1
+plugins:
+  # a plugin from a Go proxy
+  - module: "github.com/manuelarte/presentation-create-your-first-linter/unexportedconstantscheck"
+    path: "../unexportedconstantscheck"
