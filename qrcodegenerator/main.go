@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	createQRCode("https://manuelarte.github.io/presentation-create-your-first-linter", "qr-slides.jpeg")
 	createQRCode("https://github.com/manuelarte", "qr-github-manuelarte.jpeg")
 	createQRCode("https://github.com/manuelarte/presentation-create-your-first-linter", "qr-github-manuelarte-presentation-create-your-first-linter.jpeg")
 }
