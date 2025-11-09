@@ -46,6 +46,7 @@ linters:
     - sqlclosecheck # Related to SQL.
     - testpackage
     - varnamelen
+    - wsl
     - zerologlint
 
   settings:
