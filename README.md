@@ -12,7 +12,6 @@ The goal of this presentation is to create a linter, and run:
 ## Tools
 
 - I am using [reveal.js][2] to create the slides.
-- I am using [Jujutsu][3] as a version control.
 
 To start the slides, inside the [./slides/](./slides/) folder, run:
 
