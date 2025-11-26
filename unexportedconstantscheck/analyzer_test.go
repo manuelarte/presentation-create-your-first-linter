@@ -12,7 +12,7 @@ func TestAnalyzer(t *testing.T) {
 		patterns string
 	}{
 		{
-			desc:     "default",
+			desc:     "simple",
 			patterns: "simple",
 		},
 		{
@@ -36,11 +36,11 @@ func TestAnalyzerWithSuggestedFixes(t *testing.T) {
 		patterns string
 	}{
 		{
-			desc:     "default",
+			desc:     "simple-fix",
 			patterns: "simple-fix",
 		},
 		{
-			desc:     "complex",
+			desc:     "complex-fix",
 			patterns: "complex-fix",
 		},
 	}
