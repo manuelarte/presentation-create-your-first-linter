@@ -98,6 +98,14 @@
                 </div>
             </div>
 
+            <aside class="notes">
+                Hello, welcome to this presentation about "Create Your First Linter".
+                The goal of this presentation is to provide you with the knowledge and tools necessary to create your own linters,
+                and being able to run it as a standalone binary, or integrate it inside golangci-lint.
+
+                But let's start with the basics, what is a linter?
+            </aside>
+
         </section>
         <section id="what-is-golangci-lint">
             <section>
@@ -105,6 +113,13 @@
                 <blockquote cite="">
                     Automatically analyze source code for potential errors, stylistic issues, and violations of coding conventions
                 </blockquote>
+
+                <aside class="notes">
+                    Here we have the definition. A linter is a tool that automatically analyzes source code for, not only potential errors,
+                    but also a linter can be used to enforce coding conventions.
+                    And that's where I would like to help you.
+                </aside>
+
             </section>
         </section>
         <section>
@@ -138,6 +153,13 @@
                     </a>
                 </div>
             </div>
+
+            <aside class="notes">
+                My name is Manuel Doncel Martos, I'm a software developer with experience in Java and Go,
+                and I'm passionate about open source and domain-driven design.
+                I have created several linters that are used in my current projects, two of them are actually integrated in golangci-lint,
+                and I would like to share my experience with you, and hopefully inspire you to create your own linters.
+            </aside>
         </section>
         <section>
             <h2>Agenda</h2>
@@ -154,12 +176,12 @@
                   (~10m)
                 </li>
                 <li data-duration="5">
-                  <a href="#/my-experience-creating-linters">My experience creating linters</a> 
+                  <a href="#/my-linters">My linters</a>
                   <time class="agenda-time"></time>
                   (~5m)
                 </li>
                 <li data-duration="15">
-                  <a href="#/create-custom-plugin">Create custom plugin</a>
+                  <a href="#/integrate-custom-linter">Integrate custom linter</a>
                   <time class="agenda-time"></time>
                   (~15m)
                 </li>
@@ -231,7 +253,7 @@
                 <h3>Tools Analyzer</h3>
                 <p>Package <a target="_blank" href="https://pkg.go.dev/golang.org/x/tools">golang.org/x/tools</a></p>
                 <ul>
-                    <li>Token</li>
+                    <li>Node</li>
                     <li>Analyzer</li>
                     <li>Pass</li>
                     <li>Diagnosis</li>
@@ -313,7 +335,7 @@
            <img src="./assets/gopher.png" alt="go">
          </section>
         </section>
-        <section id="my-experience-creating-linters">
+        <section id="my-linters">
             <section>
                 <h2>🧐 My linters</h2>
                 <ul>
@@ -420,16 +442,46 @@
                 </div>
               </div>
             </section>
-        </section>
-        <section id="create-custom-plugin">
             <section>
-                <h2>Create custom plugin</h2>
+                <h3>Comments</h3>
+                <ul>
+                    <li>Stylistic linters help a lot in big projects.</li>
+                    <li>Be consistent.</li>
+                </ul>
+            </section>
+        </section>
+        <section id="integrate-custom-linter">
+            <section>
+                <h2>Integrate custom linter</h2>
+                <ul>
+                    <li>As a binary</li>
+                    <li>In Golangci Lint</li>
+                </ul>
+            </section>
+            <section>
+                <h2>As a binary</h2>
+                <pre><code data-trim data-noescape data-line-numbers
+                           class="language-bash">
+                        cd ./unexportedconstantscheck && go build -o unexportedconstantscheck ./cmd/.
+                        cd ../custom-plugin && ../unexportedconstantscheck/unexportedconstantscheck --fix ./...
+                  </code></pre>
+            </section>
+            <section>
+                <h2>Golangci: Create custom plugin</h2>
                 <p>More info: <a href="https://golangci-lint.run/plugins/module-plugins/" target="_blank">Module Plugin</a></p>
                 <p>Example: <a href="https://github.com/manuelarte/presentation-create-your-first-linter/tree/main/custom-plugin" target="_blank">Custom Plugin</a></p>
             </section>
             <section>
                 <h3>Let's</h3>
                 <img src="./assets/gopher.png" alt="go">
+            </section>
+            <section>
+                <h3>Takeaways</h3>
+                <ul>
+                    <li>Easy to create custom linters.</li>
+                    <li>Reduce cognitive load.</li>
+                    <li>Enjoyable experience.</li>
+                </ul>
             </section>
 
         </section>
