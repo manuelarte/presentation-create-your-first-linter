@@ -23,3 +23,10 @@ format-code: tidy ## Format go code and run the fixer, alias: fmt
 	golangci-lint fmt
 	golangci-lint run --fix ./...
 .PHONY: fmt format-code
+
+r: ## Run, alias: r
+	 go run .
+run: r
+	 go run .
+.PHONY: r run
+
