@@ -452,10 +452,18 @@
         </section>
         <section id="integrate-custom-linter">
             <section>
+                <h2>Integrate custom linter</h2>
+                <ul>
+                    <li>As a binary</li>
+                    <li>In Golangci Lint</li>
+                </ul>
+            </section>
+            <section>
                 <h2>As a binary</h2>
                 <pre><code data-trim data-noescape data-line-numbers
                            class="language-bash">
-                        go install .
+                        cd ./unexportedconstantscheck && go build -o unexportedconstantscheck ./cmd/.
+                        cd ../custom-plugin && ../unexportedconstantscheck/unexportedconstantscheck ./...
                   </code></pre>
             </section>
             <section>
