@@ -33,6 +33,41 @@
       function formatHHmm(date) {
         return date.toTimeString().split(' ')[0].slice(0, -3)
       }
+
+      // Agenda auto-time calculation: computes the HH:mm for each agenda item
+      // based on a start time and each item's duration.
+      document.addEventListener('DOMContentLoaded', function () {
+        // More robust: target the specific Agenda list under the Agenda section title
+        const agendaHeader = Array.from(document.querySelectorAll('section h2'))
+          .find(h2 => h2.textContent.trim().toLowerCase() === 'agenda');
+        if (!agendaHeader) return;
+        const agendaContainer = agendaHeader.closest('section');
+        if (!agendaContainer) return;
+        const ul = agendaContainer.querySelector('ul');
+        if (!ul) return;
+
+        // Defaults to 'now' captured at page load.
+        let start = new Date(now.getTime());
+        // Iterate items and fill in their time placeholders
+        let cursor = new Date(start.getTime());
+        ul.querySelectorAll('li').forEach((li, _) => {
+          // 1) Find <time class="agenda-time"></time> placeholder
+          let timeEl = li.querySelector('time.agenda-time');
+          if (!timeEl) return;
+          // 2) Determine duration minutes
+          let minutes = Number(li.getAttribute('data-duration'));
+          if (!Number.isFinite(minutes)) {
+            const m = li.textContent.match(/\(~\s*(\d+)\s*m\s*\)/i);
+            minutes = m ? Number(m[1]) : 0;
+          }
+
+          // 3) Set the computed time
+          timeEl.textContent = formatHHmm(cursor);
+
+          // 4) Advance cursor for the next item
+          cursor = addMinutes(cursor, minutes || 0);
+        });
+      });
     </script>
 </head>
 <body>
@@ -106,30 +141,31 @@
         </section>
         <section>
             <h2>Agenda</h2>
+            <!-- Optionally set a fixed start time for the agenda using data-start="HH:MM" -->
             <ul>
-                <li>
+                <li data-duration="5">
                     <a href="#/golangci-lint-in-a-nutshell">Golangci-lint in a nutshell</a>
-                    <script>document.write(formatHHmm(addMinutes(now, 5)))</script>
+                    <time class="agenda-time"></time>
                     (~5m)
                 </li>
-                <li>
+                <li data-duration="10">
                   <a href="#/create-your-first-linter">Create your first linter</a> 
-                  <script>document.write(formatHHmm(addMinutes(now, 10)))</script>
+                  <time class="agenda-time"></time>
                   (~10m)
                 </li>
-                <li>
+                <li data-duration="5">
                   <a href="#/my-experience-creating-linters">My experience creating linters</a> 
-                  <script>document.write(formatHHmm(addMinutes(now, 20)))</script>
+                  <time class="agenda-time"></time>
                   (~5m)
                 </li>
-                <li>
+                <li data-duration="15">
                   <a href="#/create-custom-plugin">Create custom plugin</a>
-                  <script>document.write(formatHHmm(addMinutes(now, 25)))</script>
+                  <time class="agenda-time"></time>
                   (~15m)
                 </li>
-                <li>
+                <li data-duration="5">
                   <a href="#/qa">Q/A</a> 
-                  <script>document.write(formatHHmm(addMinutes(now, 40)))</script>
+                  <time class="agenda-time"></time>
                   (~5m)
                 </li>
             </ul>
