@@ -13,7 +13,7 @@
     <!-- Theme used for syntax highlighted code -->
     <link rel="stylesheet" href="plugin/highlight/monokai.css">
 
-    <style type="text/css">
+    <style>
         section {
             text-align: left;
         }
@@ -81,7 +81,7 @@
                     <p class="tiny">
                         Manuel Doncel Martos -
                         <script>
-                            document.write(now.toLocaleDateString());
+                            document.write(now.toLocaleDateString("en-CA"));
                         </script>
                     </p>
                     <p class="tiny">
@@ -97,18 +97,6 @@
                     </a>
                 </div>
             </div>
-
-            <aside class="notes">
-                Hello, welcome to the presentation about "Create Your First Linter" in Go.
-                The goal of this presentation is to provide you with the knowledge and tools necessary to create your
-                own linters.
-                We are going to create our first linter (a very dummy one) and we will run it as a binary,
-                and we will also see how to integrate it in golangci-lint.
-
-                But let's start with the basics, what is a linter? Anyone wants to give it a try and define it?
-                (we have the definition on the next slide)
-            </aside>
-
         </section>
         <section id="linter-definition">
             <section>
@@ -117,17 +105,6 @@
                     Automatically analyze source code for potential errors, stylistic issues, and violations of coding
                     conventions
                 </blockquote>
-
-                <aside class="notes">
-                    Here we have the definition. A linter is a tool that automatically analyzes source code for, not
-                    only potential errors, but also a linter that can be used to enforce coding conventions.
-
-                    When you review a PR, you need to review both the technical implementation
-                    and also the business logic.
-                    By using linters, we can reduce part of the technical review.
-                    And that's where I would like to help you.
-                </aside>
-
             </section>
         </section>
         <section>
@@ -161,14 +138,6 @@
                     </a>
                 </div>
             </div>
-
-            <aside class="notes">
-                My name is Manuel Doncel Martos, I'm a software developer with experience in Java and Go,
-                I have quite some experience in Java, but the last 3 years I have been working with Go.
-                I have open source projects and some of then are several linters that are used in my current projects.
-                Two of them are actually integrated in golangci-lint,
-                and I would like to share my experience with you, and hopefully inspire you to create your own linters.
-            </aside>
         </section>
         <section>
             <h2>Agenda</h2>
@@ -200,17 +169,6 @@
                     (~5m)
                 </li>
             </ul>
-
-            <aside class="notes">
-                This is the agenda. First we are going to briefly review what's golangci-lint.
-                We are going to see some of the tooling that library uses.
-                Then we are moving to create our first linter, a very dummy one based on the Uber style guidelines.
-                After that I am going to briefly explain the two linters that I have created,
-                to check some of the possibilities when creating a linter.
-                And then we are going to integrate the linter we created inside golangci-lint and run it in a small
-                project.
-                Does it sound good? Let's go.
-            </aside>
         </section>
         <section id="golangci-lint-in-a-nutshell">
             <section>
@@ -250,15 +208,6 @@
 
                     </div>
                 </div>
-
-                <aside class="notes">
-                    How many of you are using golangci-lint in your projects? Hopefully most of you.
-                    Golangci-lint is the most used linter tool in Go. It contains more than 100 linters and many
-                    formatters.
-                    The difference between a linter and a formatter is that a linter is detecting issues, and a
-                    formatter
-                    is just formatting code. Examples of formatters are gci, to format the imports.
-                </aside>
             </section>
             <section>
                 <h3>Example configurations</h3>
@@ -278,18 +227,6 @@
                         <a target="_blank" href="https://gist.github.com/manuelarte/76c3cedb1f819184a9a880883e6edd5f">https://gist.github.com/manuelarte/76c3cedb1f819184a9a880883e6edd5f</a>
                     </li>
                 </ul>
-
-                <aside class="notes">
-                    golangci-lint can be configured with a configuration file. That it can be as simple as:
-                    But also there are so many linters and so many parameters to configure that it is important
-                    to expend some time on it and adapt it to your projects coding standards.
-
-                    Here you have some examples of configuration files that you can use as template,
-                    but it's important that you adjust them to your needs.
-
-                    It does not really matter if you don't follow, or you disable some linters, as long as
-                    your code is consistent.
-                </aside>
             </section>
             <section>
                 <h3>Tools Analyzer</h3>
@@ -336,10 +273,6 @@
                 <p>File to test: <a target="_blank"
                                     href="https://github.com/manuelarte/presentation-create-your-first-linter/blob/main/astexample/testdata/src/simple/simple.go">here</a>
                 </p>
-                <aside class="notes">
-                    If you want to add a linter in golangci-lint, you need to use this library.
-                    This library is on charge of parsing the source code, and build the abstract syntax tree.
-                </aside>
             </section>
         </section>
         <section id="create-your-first-linter">
