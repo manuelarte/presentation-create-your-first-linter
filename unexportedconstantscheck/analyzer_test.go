@@ -12,15 +12,37 @@ func TestAnalyzer(t *testing.T) {
 		patterns string
 	}{
 		{
-			desc:     "default",
+			desc:     "simple",
 			patterns: "simple",
 		},
-		/* TODO(manuelarte): second iteration
 		{
 			desc:     "complex",
 			patterns: "complex",
 		},
-		*/
+	}
+
+	for _, test := range testCases {
+		t.Run(test.desc, func(t *testing.T) {
+			a := NewAnalyzer()
+
+			analysistest.Run(t, analysistest.TestData(), a, test.patterns)
+		})
+	}
+}
+
+func TestAnalyzerWithSuggestedFixes(t *testing.T) {
+	testCases := []struct {
+		desc     string
+		patterns string
+	}{
+		{
+			desc:     "simple-fix",
+			patterns: "simple-fix",
+		},
+		{
+			desc:     "complex-fix",
+			patterns: "complex-fix",
+		},
 	}
 
 	for _, test := range testCases {

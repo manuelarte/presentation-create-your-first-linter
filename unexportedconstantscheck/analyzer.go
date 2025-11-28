@@ -25,6 +25,7 @@ func run(pass *analysis.Pass) (any, error) {
 		return nil, nil
 	}
 
+	// We are only interested in ValueSpec nodes.
 	nodeFilter := []ast.Node{
 		(*ast.ValueSpec)(nil),
 	}

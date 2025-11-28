@@ -3,7 +3,7 @@ package packagesimple
 import "errors"
 
 const (
-	myconstant = "myconstant"
+	myconstant = "myconstantValue"
 	MyConstant = 1
 )
 
