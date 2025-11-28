@@ -13,7 +13,7 @@
     <!-- Theme used for syntax highlighted code -->
     <link rel="stylesheet" href="plugin/highlight/monokai.css">
 
-    <style type="text/css">
+    <style>
         section {
             text-align: left;
         }
@@ -81,7 +81,7 @@
                     <p class="tiny">
                         Manuel Doncel Martos -
                         <script>
-                            document.write(now.toLocaleDateString());
+                            document.write(now.toLocaleDateString("en-CA"));
                         </script>
                     </p>
                     <p class="tiny">
@@ -97,32 +97,14 @@
                     </a>
                 </div>
             </div>
-
-            <aside class="notes">
-                Hello, welcome to this presentation about "Create Your First Linter".
-                The goal of this presentation is to provide you with the knowledge and tools necessary to create your
-                own linters,
-                and being able to run it as a standalone binary, or integrate it inside golangci-lint.
-
-                But let's start with the basics, what is a linter?
-            </aside>
-
         </section>
-        <section id="what-is-golangci-lint">
+        <section id="linter-definition">
             <section>
                 <h3>Linter</h3>
                 <blockquote cite="">
                     Automatically analyze source code for potential errors, stylistic issues, and violations of coding
                     conventions
                 </blockquote>
-
-                <aside class="notes">
-                    Here we have the definition. A linter is a tool that automatically analyzes source code for, not
-                    only potential errors,
-                    but also a linter that can be used to enforce coding conventions.
-                    And that's where I would like to help you.
-                </aside>
-
             </section>
         </section>
         <section>
@@ -156,14 +138,6 @@
                     </a>
                 </div>
             </div>
-
-            <aside class="notes">
-                My name is Manuel Doncel Martos, I'm a software developer with experience in Java and Go,
-                and I'm passionate about open source and domain-driven design.
-                I have created several linters that are used in my current projects, two of them are actually integrated
-                in golangci-lint,
-                and I would like to share my experience with you, and hopefully inspire you to create your own linters.
-            </aside>
         </section>
         <section>
             <h2>Agenda</h2>
@@ -354,7 +328,9 @@
             <section>
                 <p><a target="_blank" href="https://github.com/manuelarte/funcorder">FuncOrder</a></p>
 
-                <p>Based on <a target="_blank" href="https://github.com/uber-go/guide/blob/master/style.md#function-grouping-and-ordering">function grouping and ordering.</a></p>
+                <p>Based on <a target="_blank"
+                               href="https://github.com/uber-go/guide/blob/master/style.md#function-grouping-and-ordering">function
+                    grouping and ordering.</a></p>
 
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <!-- Left side: text or content -->
@@ -421,7 +397,9 @@
                 <p><a target="_blank" href="https://github.com/manuelarte/embeddedstructfieldcheck">EmbeddedStructFieldCheck</a>
                 </p>
 
-                <p>Based on <a target="_blank" href="https://github.com/uber-go/guide/blob/master/style.md#embedding-in-structs">embedding in structs.</a></p>
+                <p>Based on <a target="_blank"
+                               href="https://github.com/uber-go/guide/blob/master/style.md#embedding-in-structs">embedding
+                    in structs.</a></p>
 
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <!-- Left side: text or content -->
